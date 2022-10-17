@@ -16,7 +16,7 @@ public class Student {
     private final LocalDate dateAnniversaire;
 
     public int getAge() {
-        int age = dateAnniversaire.getYear() - LocalDate.now().getYear();
+        int age = LocalDate.now().getYear() - dateAnniversaire.getYear();
         return age ;
     }
 

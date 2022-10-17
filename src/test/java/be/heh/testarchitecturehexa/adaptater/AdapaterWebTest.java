@@ -3,6 +3,7 @@ package be.heh.testarchitecturehexa.adaptater;
 import be.heh.testarchitecturehexa.adaptater.in.StudentController;
 import be.heh.testarchitecturehexa.model.Student;
 import be.heh.testarchitecturehexa.port.in.StudentListUseCase;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.Matchers.hasItemInArray;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 //@SpringBootTest
 //@RunWith(SpringRunner.class)
@@ -39,10 +41,12 @@ public class AdapaterWebTest {
         students.add(new Student("tata2","titi2", LocalDate.of(2012,05,26)));
 
         //Stub
-        //Mockito.when(studentListUseCase.getStudentList()).thenReturn(students);
+        Mockito.when(studentListUseCase.getStudentList()).thenReturn(students);
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("studentList"));
+                .andExpect(view().name("studentList"))
+                .andExpect(model().attributeExists("students"))
+                .andExpect(model().attribute("students",Matchers.hasSize(3)));
     }
 }

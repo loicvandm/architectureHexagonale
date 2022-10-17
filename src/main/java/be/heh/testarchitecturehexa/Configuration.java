@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-//@Profile("prod")
 @org.springframework.context.annotation.Configuration
 @EnableJpaRepositories
 public class Configuration {
@@ -19,7 +18,7 @@ public class Configuration {
         private StudentMapper studentMapper = new StudentMapper();
 
         @Bean
-        StudentListUseCase getAllStudentUseCase(){
+        StudentListUseCase getStudentListUseCase(){
 
             return new StudentPersistenceAdapter(studentRepository,studentMapper);
         }

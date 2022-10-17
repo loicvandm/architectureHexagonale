@@ -15,9 +15,9 @@
         <th>Date</th>
     </tr>
     <tr th:each="student : ${students}">
-        <td th:text="${student.nom}"></td>
-        <td th:text="${student.prenom}"></td>
-        <td th:text="${student.dateNaissance}"></td>
+        <td th:text="${student.getNom}"></td>
+        <td th:text="${student.getPrenom}"></td>
+        <td th:text="${student.getAge}"></td>
     </tr>
 </table>
 

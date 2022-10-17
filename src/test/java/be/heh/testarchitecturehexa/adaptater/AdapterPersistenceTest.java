@@ -27,7 +27,6 @@ public class AdapterPersistenceTest extends AbstractIntegrationTest{
 
     @Autowired
     private StudentRepository studentRepository;
-    //@Autowired
     private  StudentMapper studentMapper;
 
     private StudentPersistenceAdapter studentPersistenceAdapter;

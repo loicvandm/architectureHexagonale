@@ -1,11 +1,11 @@
 package be.heh.testarchitecturehexa.adaptater.out;
 
 import be.heh.testarchitecturehexa.model.Student;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component
 public class StudentMapper {
 
     List<Student> mapToDomainEntity(List<StudentJpaEntity> students){
